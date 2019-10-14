@@ -1,0 +1,453 @@
+body {
+    background: #090009;
+    /* Wyłączamy paski przewijania */
+    overflow: hidden;
+    /* Wyłączamy możliwość wyboru poprzez długi dotyk w przeglądarkach mobilnych */
+    -webkit-touch-callout: none !important;
+}
+
+#wrapper {
+    position: absolute;
+    /* Element wrapper rozciąga się na całą wysokość i szerokość okna */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Zapobiegamy przypadkowemu podświetleniu tekstu na niebiesko */
+    user-select: none;
+}
+
+#gamecontainer {
+    /* Zaczynamy od domyślnej szerokości, którą możemy później zmienić */
+    width: 640px;
+    height: 480px;
+    /* Używamy szerszego ekranu powitalnego i umieszczamy go pośrodku kontenera */
+    background: url("images/screens/splashscreen.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Umieszczamy kontener gry pośrodku elementu zewnętrznego */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+}
+
+.gamelayer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: none;
+}
+
+.game-title {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    text-align: right;
+    width: 100%;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 90px;
+    line-height: 80px;
+    color: white;
+    text-shadow: -2px 0 purple, 0 2px purple, 2px 0 purple, 0 -2px purple;
+}
+
+.game-option {
+    position: relative;
+    top: 65%;
+    left: 10%;
+    display: block;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 48px;
+    color: white;
+    text-shadow: -2px 0 purple, 0 2px purple, 2px 0 purple, 0 -2px purple;
+    cursor: pointer;
+}
+
+.game-option:hover {
+    color: yellow;
+}
+
+/* Ekran wczytywania */
+#loadingscreen {
+    background: rgba(100, 100, 100, 0.7);
+}
+
+#loadingmessage {
+    position: relative;
+    top: 400px;
+    text-align: center;
+    height: 48px;
+    color: white;
+    background: url("images/loader.gif") no-repeat center;
+    font: 12px Arial;
+}
+
+#missionbriefingscreen {
+    background: url("images/screens/interface-middle.png");
+}
+
+input[type="button"] {
+    border-width: 0;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-image: url("images/buttons.png");
+    cursor: pointer;
+}
+
+.left-panel {
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+.right-panel {
+    right: 0;
+    top: 0;
+    position: absolute;
+}
+
+#entermission {
+    height: 52px;
+    width: 188px;
+    position: absolute;
+    top: 82px;
+    left: 3px;
+    background-position: -4px -4px;
+}
+
+#entermission:disabled,
+#entermission:active {
+    background-position: -196px -4px;
+}
+
+#exitmission {
+    height: 52px;
+    width: 72px;
+    position: absolute;
+    top: 82px;
+    right: 164px;
+    background-position: -4px -64px;
+}
+
+#exitmission:disabled,
+#exitmission:active {
+    background-position: -84px -64px;
+}
+
+#missionbriefing {
+    position: absolute;
+    top: 170px;
+    left: 40px;
+    right: 220px;
+    height: 270px;
+    text-align: justify;
+    color: rgb(130, 150, 162);
+    text-shadow: -1px 1px black;
+    font-size: 16px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+#gameinterfacescreen {
+    background: url("images/screens/interface-middle.png");
+}
+
+#gameinterfacescreen #gamemessages {
+    position: absolute;
+    padding: 5px;
+    top: 4px;
+    left: 5px;
+    right: 168px;
+    height: 60px;
+    color: rgb(130, 150, 162);
+    overflow: hidden;
+    font-size: 13px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+#gamemessages span {
+    color: white;
+}
+
+#callerpicture {
+    position: absolute;
+    right: 20px;
+    top: 155px;
+    width: 114px;
+    height: 72px;
+    overflow: hidden;
+}
+
+#cash {
+    width: 120px;
+    height: 22px;
+    position: absolute;
+    right: 20px;
+    top: 241px;
+    color: rgb(130, 150, 162);
+    overflow: hidden;
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+    text-align: right;
+}
+
+#gameinterfacescreen canvas {
+    position: absolute;
+    top: 79px;
+    left: 0;
+}
+
+#sidebarbuttons {
+    position: absolute;
+    right: 12px;
+    top: 265px;
+    width: 130px;
+    height: 214px;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#sidebarbuttons input[type="button"] {
+    width: 64px;
+    height: 54px;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    position: absolute;
+}
+
+/* Przycisk starport */
+#starport {
+    background-position: -4px -247px;
+}
+
+#starport:active,
+#starport:disabled {
+    background-position: -208px -247px;
+}
+
+/* Przycisk turret */
+#ground-turret {
+    right: 0;
+    /*background-position: -140px -247px;*/
+    background-position: -74px -247px;
+}
+
+#ground-turret:active,
+#ground-turret:disabled {
+    /*background-position: -344px -247px;*/
+    background-position: -278px -247px;
+}
+
+/* Czołg zwiadowczy */
+#scout-tank {
+    top: 107px;
+    background-position: -4px -306px;
+}
+
+#scout-tank:active,
+#scout-tank:disabled {
+    background-position: -208px -306px;
+}
+
+/* Ciężki czołg */
+#heavy-tank {
+    right: 0;
+    top: 107px;
+    background-position: -74px -306px;
+}
+
+#heavy-tank:active,
+#heavy-tank:disabled {
+    background-position: -278px -306px;
+}
+
+/* Kombajn */
+#harvester {
+    top: 55px;
+    background-position: -140px -364px;
+}
+
+#harvester:active,
+#harvester:disabled {
+    background-position: -344px -364px;
+}
+
+/* Śmigłowiec */
+#chopper {
+    top: 159px;
+    background-position: -4px -364px;
+}
+
+#chopper:active,
+#chopper:disabled {
+    background-position: -208px -364px;
+}
+
+/* Myśliwiec */
+#wraith {
+    background-position: -74px -364px;
+    top: 159px;
+    right: 0;
+}
+
+#wraith:active,
+#wraith:disabled {
+    background-position: -278px -364px;
+}
+
+/* Ekran okna wiadomości */
+#messageboxscreen {
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+#messagebox {
+    /* Umieszczamy okno wiadomości pośrodku ekranu */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    width: 296px;
+    height: 178px;
+    background: url("images/screens/messagebox.png") no-repeat center;
+    color: rgb(130, 150, 162);
+    overflow: hidden;
+    font-size: 13px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+#messagebox span {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    width: 200px;
+    height: 100px;
+}
+
+#messageboxok {
+    position: absolute;
+    top: 128px;
+    left: 11px;
+    width: 74px;
+    height: 26px;
+    background-position: -4px -122px;
+}
+
+#messageboxok:active,
+#messageboxok:disabled {
+    background-position: -82px -122px;
+}
+
+#messageboxcancel {
+    position: absolute;
+    left: 197px;
+    top: 130px;
+    width: 73px;
+    height: 24px;
+    background-position: -4px -154px;
+}
+
+#messageboxcancel:active,
+#messageboxcancel:disabled {
+    background-position: -82px -154px;
+}
+
+/* Ekran lobby trybu wielu graczy */
+#multiplayerlobbyscreen {
+    background: url("images/screens/multiplayerlobby.png") no-repeat center;
+    text-align: center;
+}
+
+#multiplayergameslist {
+    /* Umieszczamy ekran pośrodku okna */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    width: 394px;
+    height: 274px;
+    /* Ukrywamy pasek przewijania i efekty ramek */
+    overflow: hidden;
+    border: none;
+    outline: none;
+    /* Przezroczyste szare tło */
+    background: rgba(0, 0, 0, 0.5);
+    /* Formatujemy tekst */
+    color: lightblue;
+    font-size: 14px;
+    font-family: "Courier New", Courier, monospace;
+    padding: 20px;
+    text-align: left;
+}
+
+/* Style dla przycisków Dołącz i Anuluj */
+#multiplayerlobbyscreen input[type="button"] {
+    position: relative;
+    top: 410px;
+    width: 74px;
+    height: 26px;
+}
+
+#multiplayerjoin {
+    left: -225px;
+    background-position: -4px -186px;
+}
+
+#multiplayerjoin:active,
+#multiplayerjoin:disabled {
+    background-position: -82px -186px;
+}
+
+#multiplayercancel {
+    background-position: -4px -154px;
+    left: 225px;
+}
+
+#multiplayercancel:active,
+#multiplayercancel:disabled {
+    background-position: -82px -154px;
+}
+
+/* Style dla różnych stanów pokoju gry */
+tr {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #274466;
+}
+
+.running,
+.starting {
+    background-color: #444444;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+.waiting {
+    color: lightgreen;
+}
+
+.empty {
+    color: lightblue;
+}
+
+#chatmessage {
+    position: absolute;
+    top: 460px;
+    background: rgba(0, 255, 0, 0.1);
+    color: green;
+    border: 1px solid green;
+    /* Domyślnie ukrywamy pole tekstowe czatu */
+    display: none;
+}
+
+#chatmessage:focus {
+    outline: none;
+}
